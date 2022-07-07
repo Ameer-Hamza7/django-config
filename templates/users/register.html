@@ -1,3 +1,5 @@
+{% load static %}
+{% load widget_tweaks %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,34 +15,34 @@
     <meta content="" name="author" />
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="../assets/images/favicon.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="{% static 'assets/images/favicon.png' %}" type="image/x-icon" />
     <!-- For iPhone -->
-    <link rel="apple-touch-icon-precomposed" href="../assets/images/apple-touch-icon-57-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="{% static 'assets/images/apple-touch-icon-57-precomposed.png' %}">
     <!-- For iPhone 4 Retina display -->
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/images/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static 'assets/images/apple-touch-icon-114-precomposed.png' %}">
     <!-- For iPad -->
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/images/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static 'assets/images/apple-touch-icon-72-precomposed.png' %}">
     <!-- For iPad Retina display -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/images/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static 'assets/images/apple-touch-icon-144-precomposed.png' %}">
 
     <!-- CORE CSS FRAMEWORK - START -->
-    <link href="../assets/plugins/pace/pace-theme-flash.css" rel="stylesheet" type="text/css" media="screen" />
-    <link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="../assets/plugins/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
-    <link href="../assets/fonts/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
-    <link href="../assets/css/animate.min.css" rel="stylesheet" type="text/css" />
-    <link href="../assets/plugins/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/plugins/pace/pace-theme-flash.css' %}" rel="stylesheet" type="text/css" media="screen" />
+    <link href="{% static 'assets/plugins/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/plugins/bootstrap/css/bootstrap-theme.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/fonts/font-awesome/css/font-awesome.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/css/animate.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/plugins/perfect-scrollbar/perfect-scrollbar.css' %}" rel="stylesheet" type="text/css" />
     <!-- CORE CSS FRAMEWORK - END -->
 
     <!-- HEADER SCRIPTS INCLUDED ON THIS PAGE - START -->
 
-    <link href="../assets/plugins/icheck/skins/all.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="{% static 'assets/plugins/icheck/skins/all.css' %}" rel="stylesheet" type="text/css" media="screen" />
 
     <!-- HEADER SCRIPTS INCLUDED ON THIS PAGE - END -->
 
     <!-- CORE CSS TEMPLATE - START -->
-    <link href="../assets/css/style.css" rel="stylesheet" type="text/css" />
-    <link href="../assets/css/responsive.css" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/css/responsive.css' %}" rel="stylesheet" type="text/css" />
     <!-- CORE CSS TEMPLATE - END -->
 
 </head>
@@ -54,7 +56,7 @@
         <div class="login-wrapper row">
             <div id="login" class="login loginpage col-lg-offset-2 col-md-offset-3 col-sm-offset-3 col-xs-offset-0 col-xs-12 col-sm-6 col-lg-8">    
                 <div class="login-form-header">
-                     <img src="../data/icons/signup.png" alt="login-icon" style="max-width:64px">
+                     <img src="{% static 'data/icons/signup.png' %}" alt="login-icon" style="max-width:64px">
                      <div class="login-header">
                          <h4 class="bold color-white">Signup Now!</h4>
                          <h4><small>Please enter your data to register.</small></h4>
@@ -65,7 +67,8 @@
 
                     <div class="content-body" style="padding-top:30px">
 
-                        <form id="msg_validate" action="#" novalidate="novalidate" class="no-mb no-mt">
+                        <form id="msg_validate" method="POST" action="#" novalidate="novalidate" class="no-mb no-mt">
+                            {% csrf_token %}
                             <div class="row">
                                 <div class="col-xs-12">
 
@@ -73,7 +76,7 @@
                                         <div class="form-group">
                                             <label class="form-label">User name</label>
                                             <div class="controls">
-                                                <input type="text" class="form-control" name="formfield2" placeholder="enter username">
+                                                {% render_field form.username class="form-control" %}
                                             </div>
                                         </div>
                                     </div>
@@ -82,7 +85,7 @@
                                         <div class="form-group">
                                             <label class="form-label">Email</label>
                                             <div class="controls">
-                                                <input type="text" class="form-control" name="formfield1" placeholder="enter email">
+                                                {% render_field form.email class="form-control" %}
                                             </div>
                                         </div>
                                     </div>
@@ -91,7 +94,7 @@
                                         <div class="form-group">
                                             <label class="form-label">Password</label>
                                             <div class="controls">
-                                                <input type="password" class="form-control" name="formfield2" placeholder="enter password">
+                                                {% render_field form.password1 class="form-control" %}
                                             </div>
                                         </div>
                                     </div>
@@ -100,16 +103,15 @@
                                         <div class="form-group">
                                             <label class="form-label">Repeat Password</label>
                                             <div class="controls">
-                                                <input type="password" class="form-control" name="formfield1" placeholder="repeat password">
+                                                {% render_field form.password2 class="form-control" %}
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="pull-left">
-                                        <a href="index-2.html" class="btn btn-primary mt-10 btn-corner right-15">Sign up</a>
-                                        <a href="ui-login.html" class="btn mt-10 btn-corner signup">Login</a>
+                                        <button class="btn btn-primary mt-10 btn-corner right-15">Sign up</button>
+                                        <a href="{% url 'login' %}" class="btn mt-10 btn-corner signup">Login</a>
                                     </div>
-
                                 </div>
                             </div>
                         </form>
@@ -117,8 +119,8 @@
                 </div>
 
                 <p id="nav">
-                    <a class="pull-left" href="#" title="Password Lost and Found">Forgot password?</a>
-                    <a class="pull-right" href="ui-login.html" title="Sign Up">Login</a>
+                    {% comment %} <a class="pull-left" href="#" title="Password Lost and Found">Forgot password?</a> {% endcomment %}
+                    <a class="pull-right" href="{% url 'login' %}" title="Sign Up">Login</a>
                 </p>
 
             </div>
@@ -129,21 +131,21 @@
     <!-- LOAD FILES AT PAGE END FOR FASTER LOADING -->
 
     <!-- CORE JS FRAMEWORK - START -->
-    <script src="../assets/js/jquery.min.js"></script>
-    <script src="../assets/js/jquery.easing.min.js"></script>
-    <script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../assets/plugins/pace/pace.min.js"></script>
-    <script src="../assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    <script src="../assets/plugins/viewport/viewportchecker.js"></script>
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.easing.min.js' %}"></script>
+    <script src="{% static 'assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/plugins/pace/pace.min.js' %}"></script>
+    <script src="{% static 'assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js' %}"></script>
+    <script src="{% static 'assets/plugins/viewport/viewportchecker.js' %}"></script>
     <!-- CORE JS FRAMEWORK - END -->
 
     <!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - START -->
 
-    <script src="../assets/plugins/icheck/icheck.min.js"></script>
+    <script src="{% static 'assets/plugins/icheck/icheck.min.js' %}"></script>
     <!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - END -->
 
     <!-- CORE TEMPLATE JS - START -->
-    <script src="../assets/js/scripts.js"></script>
+    <script src="{% static 'assets/js/scripts.js' %}"></script>
     <!-- END CORE TEMPLATE JS - END -->
 
 </body>

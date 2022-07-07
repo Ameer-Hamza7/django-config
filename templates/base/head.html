@@ -6,7 +6,7 @@
 <!-- Mirrored from dashtic.netlify.app/html-dash/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 05 Jul 2022 11:30:24 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Dashboard - Multipurpose Dash </title>
@@ -347,6 +347,10 @@
                         </ul>
                     </li>
                     <li class="chat-toggle-wrapper">
+                        <a href="{% url 'login' %}" data-toggle="" class="" style="color:white; margin-right: 10px;">
+                            <i class="fa fa-user"></i>
+                            {% comment %} <i class="fa fa-times"></i> {% endcomment %}
+                        </a>
                         <a href="#" data-toggle="chatbar" class="toggle_chat">
                             <i class="fa fa-comments"></i>
                             <span class="badge badge-accent">9</span>
