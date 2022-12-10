@@ -1,0 +1,90 @@
+{% load widget_tweaks %} {% load static %} {% include 'base/header.html' %} {% include 'base/sidebar.html' %}
+<div class="content-wrapper">
+
+	<!-- Inner content -->
+	<div class="content-inner">
+	<div class="content">
+        <form action="" method="POST">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Add New Group</h5>
+                </div>
+                {% csrf_token %}
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 col-lg-4 col-12">
+                            <div class="row">
+                                <div class="col-md-9 col-lg-9 col-sm-12">
+                                    <!--For Creation -->
+                                    {% render_field group_creation_form.name class="form-control" placeholder="Group Name" %}
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h5>Assign Group Permissions</h5>
+                </div>
+                {% csrf_token %}
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="w-100">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Model
+                                        </th>
+                                        <th>
+                                            Permission Type
+                                        </th>
+                                        <th style="text-align: center;">
+                                            CAN ADD
+                                        </th>
+                                        <th style="text-align: center;">
+                                            CAN CHANGE
+                                        </th>
+                                        <th style="text-align: center;">
+                                            CAN DELETE
+                                        </th>
+                                        <th style="text-align: center;">
+                                            CAN VIEW
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for each_ct in perms %}
+                                    <tr>
+                                        <td style="text-transform: uppercase;">
+                                            {{each_ct.contentType.app_label}}
+                                        </td>
+                                        <td style="text-transform: uppercase;">
+                                            {{each_ct.contentType.model}}
+                                        </td>
+                                        {% for each_perm in each_ct.perms %}
+                                        <td style="text-align: center;">
+                                            <input type="checkbox" name="permission" value={{each_perm.id}} >
+                                        </td>
+                                        {% endfor %}
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row mb-4 mt-4">
+                        <div class="col-md-4">
+                            <button class="btn-primary btn-submit">
+                                Create A Group
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    </div>
+    </div>
+    {% include 'base/footer.html' %}
