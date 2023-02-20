@@ -1,0 +1,54 @@
+{% include 'base/attachements.html' %}
+
+<script>
+	function redirectToBack() {
+		window.history.back();
+		console.log('press')
+	}
+</script>
+
+<body>
+  <div class="page-content">
+    <div class="content-wrapper">
+      <!-- Inner content -->
+      <div class="content-inner">
+        <!-- Content area -->
+        <div class="content d-flex justify-content-center align-items-center">
+          <!-- Container -->
+          <div class="flex-fill">
+            <!-- Error title -->
+            <div class="text-center mb-4">
+              <img
+                src="../../../../global_assets/images/error_bg.svg"
+                class="img-fluid mb-4"
+                height="230"
+                alt=""
+              />
+              <h1 class="display-3 font-weight-semibold line-height-1 mb-2">
+                SORRY
+              </h1>
+              <h5>
+                You are not authorize <br />
+                To view this content
+              </h5>
+            </div>
+            <!-- /error title -->
+
+            <!-- Error content -->
+            <div class="text-center">
+            <button href="#" class="btn btn-primary" onClick="redirectToBack()">
+				<i class="icon-home4 mr-2"></i> Return to dashboard
+            </button>
+          </div>
+          <!-- /error wrapper -->
+        </div>
+        <!-- /container -->
+      </div>
+      <!-- /content area -->
+
+      <!-- /inner content -->
+    </div>
+  </div>
+</body>
+
+</html>

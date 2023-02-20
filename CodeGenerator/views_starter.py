@@ -125,9 +125,3 @@ ConstructViewHtml(
     'cost_price',
     'sell_price'
 )
-
-ConstructViewHtml(
-    'Transaction',
-    'member',
-    'product'
-)

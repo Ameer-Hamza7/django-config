@@ -1,0 +1,648 @@
+
+{% load widget_tweaks %}
+{% load static %} {% include 'base/head.html' %} {% include 'base/sidebar-left.html' %}
+<div class="content-wrapper">
+  <!-- Page header -->
+  <div class="page-header page-header-light">
+    <ul class="nav nav-tabs nav-tabs-bottom" style="margin-bottom: 0px">
+      
+    
+            {% if perms.employee_app.view_disciplinary_action %}
+            <li class="nav-item">
+                <a href="{% url 'create_disciplinary_action' %}" class="nav-link active">
+                    DISCIPLINARY ACTIONS
+                </a>
+            </li>
+            {% endif %}
+        
+    </ul>
+  </div>
+  <!-- /page header -->
+
+  <!-- Inner content -->
+  <div class="content-inner">
+    <!-- Content area -->
+    <div class="content">
+      {% if status == 'edit' %}
+      <div class="card">
+        <div class="card-body">
+            <form method='POST' enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row">
+                    
+    
+            <div class="col-lg-6" style="margin-bottom : 20px;">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label>{{form.employee.label}}</label>
+                        {% render_field form.employee class="form-control mb-2" placeholder="EMPLOYEE" %}
+                    </div>
+
+                </fieldset>
+            </div>
+        
+            <div class="col-lg-6" style="margin-bottom : 20px;">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label>{{form.emp_cl_id.label}}</label>
+                        {% render_field form.emp_cl_id class="form-control mb-2" placeholder="EMP CL ID" %}
+                    </div>
+
+                </fieldset>
+            </div>
+        
+            <div class="col-lg-6" style="margin-bottom : 20px;">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label>{{form.emp_pos.label}}</label>
+                        {% render_field form.emp_pos class="form-control mb-2" placeholder="EMP POS" %}
+                    </div>
+
+                </fieldset>
+            </div>
+        
+            <div class="col-lg-6" style="margin-bottom : 20px;">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label>{{form.manager.label}}</label>
+                        {% render_field form.manager class="form-control mb-2" placeholder="MANAGER" %}
+                    </div>
+
+                </fieldset>
+            </div>
+        
+            <div class="col-lg-6" style="margin-bottom : 20px;">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label>{{form.manager_cl_id.label}}</label>
+                        {% render_field form.manager_cl_id class="form-control mb-2" placeholder="MANAGER CL ID" %}
+                    </div>
+
+                </fieldset>
+            </div>
+        
+            <div class="col-lg-6" style="margin-bottom : 20px;">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label>{{form.emp_pos.label}}</label>
+                        {% render_field form.emp_pos class="form-control mb-2" placeholder="EMP POS" %}
+                    </div>
+
+                </fieldset>
+            </div>
+        
+            <div class="col-lg-6" style="margin-bottom : 20px;">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label>{{form.infraction_date.label}}</label>
+                        {% render_field form.infraction_date class="form-control mb-2" placeholder="INFRACTION DATE" %}
+                    </div>
+
+                </fieldset>
+            </div>
+        
+            <div class="col-lg-6" style="margin-bottom : 20px;">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label>{{form.infraction_time.label}}</label>
+                        {% render_field form.infraction_time class="form-control mb-2" placeholder="INFRACTION TIME" %}
+                    </div>
+
+                </fieldset>
+            </div>
+        
+            <div class="col-lg-6" style="margin-bottom : 20px;">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label>{{form.infraction_place.label}}</label>
+                        {% render_field form.infraction_place class="form-control mb-2" placeholder="INFRACTION PLACE" %}
+                    </div>
+
+                </fieldset>
+            </div>
+        
+            <div class="col-lg-6" style="margin-bottom : 20px;">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label>{{form.infraction_desc.label}}</label>
+                        {% render_field form.infraction_desc class="form-control mb-2" placeholder="INFRACTION DESC" %}
+                    </div>
+
+                </fieldset>
+            </div>
+        
+            <div class="col-lg-6" style="margin-bottom : 20px;">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label>{{form.emp_stat.label}}</label>
+                        {% render_field form.emp_stat class="form-control mb-2" placeholder="EMP STAT" %}
+                    </div>
+
+                </fieldset>
+            </div>
+        
+            <div class="col-lg-6" style="margin-bottom : 20px;">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label>{{form.proposed_corrective_action.label}}</label>
+                        {% render_field form.proposed_corrective_action class="form-control mb-2" placeholder="PROPOSED CORRECTIVE ACTION" %}
+                    </div>
+
+                </fieldset>
+            </div>
+        
+            <div class="col-lg-6" style="margin-bottom : 20px;">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label>{{form.employee_print_name.label}}</label>
+                        {% render_field form.employee_print_name class="form-control mb-2" placeholder="EMPLOYEE PRINT NAME" %}
+                    </div>
+
+                </fieldset>
+            </div>
+        
+            <div class="col-lg-6" style="margin-bottom : 20px;">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label>{{form.employee_sig.label}}</label>
+                        {% render_field form.employee_sig class="form-control mb-2" placeholder="EMPLOYEE SIG" %}
+                    </div>
+
+                </fieldset>
+            </div>
+        
+            <div class="col-lg-6" style="margin-bottom : 20px;">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label>{{form.emp_sig_date.label}}</label>
+                        {% render_field form.emp_sig_date class="form-control mb-2" placeholder="EMP SIG DATE" %}
+                    </div>
+
+                </fieldset>
+            </div>
+        
+            <div class="col-lg-6" style="margin-bottom : 20px;">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label>{{form.manager_print_name.label}}</label>
+                        {% render_field form.manager_print_name class="form-control mb-2" placeholder="MANAGER PRINT NAME" %}
+                    </div>
+
+                </fieldset>
+            </div>
+        
+            <div class="col-lg-6" style="margin-bottom : 20px;">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label>{{form.manager_sig.label}}</label>
+                        {% render_field form.manager_sig class="form-control mb-2" placeholder="MANAGER SIG" %}
+                    </div>
+
+                </fieldset>
+            </div>
+        
+            <div class="col-lg-6" style="margin-bottom : 20px;">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label>{{form.manager_sig_date.label}}</label>
+                        {% render_field form.manager_sig_date class="form-control mb-2" placeholder="MANAGER SIG DATE" %}
+                    </div>
+
+                </fieldset>
+            </div>
+        
+            <div class="col-lg-6" style="margin-bottom : 20px;">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label>{{form.hr_print_name.label}}</label>
+                        {% render_field form.hr_print_name class="form-control mb-2" placeholder="HR PRINT NAME" %}
+                    </div>
+
+                </fieldset>
+            </div>
+        
+            <div class="col-lg-6" style="margin-bottom : 20px;">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label>{{form.hr_sig.label}}</label>
+                        {% render_field form.hr_sig class="form-control mb-2" placeholder="HR SIG" %}
+                    </div>
+
+                </fieldset>
+            </div>
+        
+            <div class="col-lg-6" style="margin-bottom : 20px;">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label>{{form.hr_sig_date.label}}</label>
+                        {% render_field form.hr_sig_date class="form-control mb-2" placeholder="HR SIG DATE" %}
+                    </div>
+
+                </fieldset>
+            </div>
+        
+                </div>
+                <div class="text-right">
+                    {% if status == 'edit' %}
+                    <button class="btn btn-success">UPDATE DISCIPLINARY ACTION</button> {% else %}
+                    <button class="btn btn-success">ADD DISCIPLINARY ACTION</button> {% endif %}
+                </div>
+            </form>
+        </div>
+      </div>
+      {% endif %}
+      {% if status == 'add' %}
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title">DISCIPLINARY ACTION</h5>
+        </div>
+
+        <table class="table datatable-column-search-selects">
+          <thead>
+            <tr>
+              {% for head in header %}
+              <th>{{head}}</th>
+              {% endfor %}
+              <th>ACTIONS</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for dataset in data %}
+            <tr>
+                <td>
+                    {{dataset.id}}
+                </td>
+                
+
+            <td>
+                {{dataset.employee}}
+            </td>
+        
+            <td>
+                {{dataset.serial_no}}
+            </td>
+        
+            <td>
+                {{dataset.manager}}
+            </td>
+        
+            <td>
+                {{dataset.infraction_date}}
+            </td>
+        
+            <td>
+                {{dataset.infraction_time}}
+            </td>
+        
+                <td style="padding: 5px 10px!important">
+                    {% if perms.employee_app.view_disciplinary_action %}
+                    <a href="{% url 'view_disciplinary_action' dataset.id %}">
+                        <button class="btn btn-success" style="margin-right: 5px;"><i class="fas fa-eye fa-xl"></i></button>
+                    </a>
+                    {% endif %}
+                    {% if perms.employee_app.change_disciplinary_action %}
+                    <a href="{% url 'update_disciplinary_action' dataset.id %}">
+                        <button class="btn btn-secondary" style="margin-right: 5px;"><i class="fas fa-edit fa-xl"></i></button>
+                    </a>
+                    {% endif %}
+                    {% if perms.employee_app.delete_disciplinary_action %}
+                    <a href="{% url 'delete_disciplinary_action' dataset.id %}">
+                        <button class="btn btn-danger" style="margin-right: 5px;"><i class="fas fa-trash fa-xl"></i></button>
+                    </a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      {% endif %}
+    </div>
+    <!-- /content area -->
+  </div>
+  <!-- /inner content -->
+</div>
+<div
+  class="sidebar sidebar-light sidebar-right sidebar-expand-xl sidebar-collapsed"
+>
+  <!-- Expand button -->
+  <button
+    type="button"
+    class="btn btn-sidebar-expand sidebar-control sidebar-right-toggle"
+  >
+    <i class="icon-arrow-left12"></i>
+  </button>
+  <!-- /expand button -->
+
+  <!-- Sidebar content -->
+  {% if status == 'add' %}
+  <div class="sidebar-content">
+    <!-- Header -->
+    <div class="sidebar-section sidebar-section-body d-flex align-items-center">
+      {% if status == 'edit' %}
+      <h5 class="mb-0">UPDATE DISCIPLINARY ACTION</h5>
+      {% else %}
+      <h5 class="mb-0">ADD DISCIPLINARY ACTION</h5>
+      {% endif %}
+
+      <div class="ml-auto">
+        <button
+          type="button"
+          class="btn btn-outline-light text-body border-transparent btn-icon rounded-pill btn-sm sidebar-control sidebar-right-toggle d-none d-xl-inline-block"
+        >
+          <i class="icon-transmission"></i>
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-outline-light text-body border-transparent btn-icon rounded-pill btn-sm sidebar-mobile-right-toggle d-xl-none"
+        >
+          <i class="icon-cross2"></i>
+        </button>
+      </div>
+    </div>
+    <!-- /header -->
+    <!-- Actions -->
+    {% if perms.employee_app.add_disciplinary_action %}
+    <div class="sidebar-section">
+      <div id="sidebar-actions">
+        <div class="sidebar-section-body">
+            <div class="card">
+                <div class="card-body">
+                    <form method='POST' enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                            
+    
+            <div class="col-lg-6" style="margin-bottom : 20px;">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label>{{form.employee.label}}</label>
+                        {% render_field form.employee class="form-control mb-2" placeholder="EMPLOYEE" %}
+                    </div>
+
+                </fieldset>
+            </div>
+        
+            <div class="col-lg-6" style="margin-bottom : 20px;">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label>{{form.emp_cl_id.label}}</label>
+                        {% render_field form.emp_cl_id class="form-control mb-2" placeholder="EMP CL ID" %}
+                    </div>
+
+                </fieldset>
+            </div>
+        
+            <div class="col-lg-6" style="margin-bottom : 20px;">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label>{{form.emp_pos.label}}</label>
+                        {% render_field form.emp_pos class="form-control mb-2" placeholder="EMP POS" %}
+                    </div>
+
+                </fieldset>
+            </div>
+        
+            <div class="col-lg-6" style="margin-bottom : 20px;">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label>{{form.manager.label}}</label>
+                        {% render_field form.manager class="form-control mb-2" placeholder="MANAGER" %}
+                    </div>
+
+                </fieldset>
+            </div>
+        
+            <div class="col-lg-6" style="margin-bottom : 20px;">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label>{{form.manager_cl_id.label}}</label>
+                        {% render_field form.manager_cl_id class="form-control mb-2" placeholder="MANAGER CL ID" %}
+                    </div>
+
+                </fieldset>
+            </div>
+        
+            <div class="col-lg-6" style="margin-bottom : 20px;">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label>{{form.emp_pos.label}}</label>
+                        {% render_field form.emp_pos class="form-control mb-2" placeholder="EMP POS" %}
+                    </div>
+
+                </fieldset>
+            </div>
+        
+            <div class="col-lg-6" style="margin-bottom : 20px;">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label>{{form.infraction_date.label}}</label>
+                        {% render_field form.infraction_date class="form-control mb-2" placeholder="INFRACTION DATE" %}
+                    </div>
+
+                </fieldset>
+            </div>
+        
+            <div class="col-lg-6" style="margin-bottom : 20px;">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label>{{form.infraction_time.label}}</label>
+                        {% render_field form.infraction_time class="form-control mb-2" placeholder="INFRACTION TIME" %}
+                    </div>
+
+                </fieldset>
+            </div>
+        
+            <div class="col-lg-6" style="margin-bottom : 20px;">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label>{{form.infraction_place.label}}</label>
+                        {% render_field form.infraction_place class="form-control mb-2" placeholder="INFRACTION PLACE" %}
+                    </div>
+
+                </fieldset>
+            </div>
+        
+            <div class="col-lg-6" style="margin-bottom : 20px;">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label>{{form.infraction_desc.label}}</label>
+                        {% render_field form.infraction_desc class="form-control mb-2" placeholder="INFRACTION DESC" %}
+                    </div>
+
+                </fieldset>
+            </div>
+        
+            <div class="col-lg-6" style="margin-bottom : 20px;">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label>{{form.emp_stat.label}}</label>
+                        {% render_field form.emp_stat class="form-control mb-2" placeholder="EMP STAT" %}
+                    </div>
+
+                </fieldset>
+            </div>
+        
+            <div class="col-lg-6" style="margin-bottom : 20px;">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label>{{form.proposed_corrective_action.label}}</label>
+                        {% render_field form.proposed_corrective_action class="form-control mb-2" placeholder="PROPOSED CORRECTIVE ACTION" %}
+                    </div>
+
+                </fieldset>
+            </div>
+        
+            <div class="col-lg-6" style="margin-bottom : 20px;">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label>{{form.employee_print_name.label}}</label>
+                        {% render_field form.employee_print_name class="form-control mb-2" placeholder="EMPLOYEE PRINT NAME" %}
+                    </div>
+
+                </fieldset>
+            </div>
+        
+            <div class="col-lg-6" style="margin-bottom : 20px;">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label>{{form.employee_sig.label}}</label>
+                        {% render_field form.employee_sig class="form-control mb-2" placeholder="EMPLOYEE SIG" %}
+                    </div>
+
+                </fieldset>
+            </div>
+        
+            <div class="col-lg-6" style="margin-bottom : 20px;">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label>{{form.emp_sig_date.label}}</label>
+                        {% render_field form.emp_sig_date class="form-control mb-2" placeholder="EMP SIG DATE" %}
+                    </div>
+
+                </fieldset>
+            </div>
+        
+            <div class="col-lg-6" style="margin-bottom : 20px;">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label>{{form.manager_print_name.label}}</label>
+                        {% render_field form.manager_print_name class="form-control mb-2" placeholder="MANAGER PRINT NAME" %}
+                    </div>
+
+                </fieldset>
+            </div>
+        
+            <div class="col-lg-6" style="margin-bottom : 20px;">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label>{{form.manager_sig.label}}</label>
+                        {% render_field form.manager_sig class="form-control mb-2" placeholder="MANAGER SIG" %}
+                    </div>
+
+                </fieldset>
+            </div>
+        
+            <div class="col-lg-6" style="margin-bottom : 20px;">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label>{{form.manager_sig_date.label}}</label>
+                        {% render_field form.manager_sig_date class="form-control mb-2" placeholder="MANAGER SIG DATE" %}
+                    </div>
+
+                </fieldset>
+            </div>
+        
+            <div class="col-lg-6" style="margin-bottom : 20px;">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label>{{form.hr_print_name.label}}</label>
+                        {% render_field form.hr_print_name class="form-control mb-2" placeholder="HR PRINT NAME" %}
+                    </div>
+
+                </fieldset>
+            </div>
+        
+            <div class="col-lg-6" style="margin-bottom : 20px;">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label>{{form.hr_sig.label}}</label>
+                        {% render_field form.hr_sig class="form-control mb-2" placeholder="HR SIG" %}
+                    </div>
+
+                </fieldset>
+            </div>
+        
+            <div class="col-lg-6" style="margin-bottom : 20px;">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label>{{form.hr_sig_date.label}}</label>
+                        {% render_field form.hr_sig_date class="form-control mb-2" placeholder="HR SIG DATE" %}
+                    </div>
+
+                </fieldset>
+            </div>
+        
+                        </div>
+                        <div class="text-right">
+                            {% if status == 'edit' %}
+                            <button class="btn btn-success">UPDATE DISCIPLINARY ACTION</button> {% else %}
+                            <button class="btn btn-success">ADD DISCIPLINARY ACTION</button> {% endif %}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+  {% endif %}
+  <!-- /sidebar content -->
+</div>
+
+{% include 'base/foot.html' %}
+            

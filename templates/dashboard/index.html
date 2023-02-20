@@ -1,424 +1,163 @@
-{% load static %} {% include 'base/head.html' %} {% include 'base/sidebar.html' %} {% include 'base/sidebar.html' %}
-<!-- START CONTENT -->
-<div id="main-content" class="">
-    <div class="wrapper main-wrapper row">
+{% load widget_tweaks %} {% load static %}  {% include 'base/dashboard-head.html' %}
+{% include 'base/sidebar-left.html' %}
+<div class="page-content">
+<!-- Main content -->
+  <div class="content-wrapper">
+    <!-- Inner content -->
+    <div class="content-inner">
+      <!-- Content area -->
+      <div class="content">
+        <div class="chart-container">
+          <div class="row">
+            <div class="col-md-9">
+                  <div class="card" style="height: 492px;">
+                    <div class="card-header">
+                      <button id="main-dash-y" onClick="updateChck('Y');">Year</button>
+                      <button id="main-dash-m" onClick="updateChck('M');">Month</button>
+                      <button id="main-dash-d" onClick="updateChck('D');">Day</button>
+                    </div>
+                    <div class="card-body">
+                  <div class="chart has-fixed-height" id="columns_basic" style="margin-top: 24px;"></div>
+                </div>
+              </div>
+    
+                </div>
+                <div class="col-md-3">
+                  <div class="card">
+                    <div class="card-body">
+                  <div class="row">
+                  <div class="col-md-12">
+                    <div class="card card-body bg-primary text-white has-bg-image">
+                      <div class="media mb-3">
+                        <div class="media-body">
+                          <h6 class="font-weight-semibold mb-0">Server maintenance</h6>
+                          <span class="opacity-75">Until 1st of June</span>
+                        </div>
+      
+                        <div class="ml-3 align-self-center">
+                          <i class="icon-cog3 icon-2x"></i>
+                        </div>
+                      </div>
+      
+                      <div class="progress bg-primary mb-2" style="height: 0.125rem;">
+                        <div class="progress-bar bg-white" style="width: 67%">
+                          <span class="sr-only">67% Complete</span>
+                        </div>
+                      </div>
+                              
+                        <div>
+                          <span class="float-right">67%</span>
+                          Re-indexing
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
 
-        <div class="clearfix"></div>
-        <!-- MAIN CONTENT AREA STARTS -->
+                      <!-- Order shipped -->
+                      <div class="card card-body text-center bg-purple text-white has-bg-image">
+                        <div class="svg-center position-relative" id="progress_icon_four"><svg width="84" height="84"><g transform="translate(42,42)"><path class="d3-progress-background" d="M0,42A42,42 0 1,1 0,-42A42,42 0 1,1 0,42M0,39.5A39.5,39.5 0 1,0 0,-39.5A39.5,39.5 0 1,0 0,39.5Z" style="fill: rgb(255, 255, 255); opacity: 0.1;"></path><path class="d3-progress-foreground" filter="url(#blur)" d="M6.661338147750939e-16,-40.7308237088326A1.25,1.25 0 0,1 1.2883435582822094,-41.98023547904219A42,42 0 0,1 3.9217621022559332,41.81650131244016A1.25,1.25 0 0,1 2.557509581534405,40.65045073231489L2.557509581534405,40.65045073231489A1.25,1.25 0 0,1 3.6883238818835555,39.327423853366334A39.5,39.5 0 0,0 1.2116564417177922,-39.48141193862301A1.25,1.25 0 0,1 6.661338147750939e-16,-40.7308237088326Z" style="fill: rgb(255, 255, 255); stroke: rgb(255, 255, 255);"></path><path class="d3-progress-front" d="M6.661338147750939e-16,-40.7308237088326A1.25,1.25 0 0,1 1.2883435582822094,-41.98023547904219A42,42 0 0,1 3.9217621022559332,41.81650131244016A1.25,1.25 0 0,1 2.557509581534405,40.65045073231489L2.557509581534405,40.65045073231489A1.25,1.25 0 0,1 3.6883238818835555,39.327423853366334A39.5,39.5 0 0,0 1.2116564417177922,-39.48141193862301A1.25,1.25 0 0,1 6.661338147750939e-16,-40.7308237088326Z" style="fill: rgb(255, 255, 255); fill-opacity: 1;"></path></g></svg><i class="icon-truck counter-icon" style="color: rgb(255, 255, 255); top: 26px;"></i></div>
+                        <h2 class="pt-1 mt-2 mb-1">49%</h2>
 
-        <div class="col-lg-12">
-            <section class="box nobox marginBottom0">
-                <div class="content-body">
-                    <div class="row">
-
-                        <div class="col-lg-3 col-sm-6 col-xs-12">
-                            <div class="statistics-box">
-                                <div class="mb-15">
-                                    <i class="pull-left ico-icon icon-md icon-primary">
-                                                <img src="../data/app-images/dash-icon1.png" class="ico-icon-o" alt="">
-                                            </i>
-                                    <div class="stats mb-30">
-                                        <h3 class="boldy mb-5">$8,457</h3>
-                                        <span>Amount Due</span>
-                                    </div>
-                                </div>
-                                <div id="spark1"></div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-sm-6 col-xs-12">
-                            <div class="statistics-box">
-                                <div class="mb-15">
-                                    <i class="pull-left ico-icon icon-md icon-primary">
-                                                <img src="../data/app-images/dash-icon2.png" class="ico-icon-o" alt="">
-                                            </i>
-                                    <div class="stats mb-30">
-                                        <h3 class="boldy mb-5">$19,627</h3>
-                                        <span>Total Income</span>
-                                    </div>
-                                </div>
-                                <div id="spark2"></div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-sm-6 col-xs-12">
-                            <div class="statistics-box">
-                                <div class="mb-15">
-                                    <i class="pull-left ico-icon icon-md icon-primary">
-                                                <img src="../data/app-images/dash-icon3.png" class="ico-icon-o" alt="">
-                                            </i>
-                                    <div class="stats mb-30">
-                                        <h3 class="boldy mb-5">238,232</h3>
-                                        <span>Registered Users</span>
-                                    </div>
-                                </div>
-                                <div id="spark3"></div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-sm-6 col-xs-12">
-                            <div class="statistics-box">
-                                <div class="mb-15">
-                                    <i class="pull-left ico-icon icon-md icon-primary">
-                                                <img src="../data/app-images/dash-icon4.png" class="ico-icon-o" alt="">
-                                            </i>
-                                    <div class="stats mb-30">
-                                        <h3 class="boldy mb-5">%18,68</h3>
-                                        <span>Bounce rate</span>
-                                    </div>
-                                </div>
-                                <div id="spark4"></div>
-                            </div>
-                        </div>
+                        Orders shipped
+                        <div class="font-size-sm opacity-75">92 orders pending</div>
+                      </div>
+                      <!-- /orders shipped -->
 
                     </div>
-                    <!-- End .row -->
+                  </div>
                 </div>
-            </section>
+              </div>
+                </div>
+              </div>
         </div>
 
-        <div class="clearfix"></div>
-
-        <div class="col-lg-8 col-xs-12">
-            <section class="box ">
-                <header class="panel_header">
-                    <h2 class="title pull-left">Realtime Visitors Statistics <span class="badge badge-pill badge-lg badge-danger  ml-10 d-none d-lg-block">New</span></h2>
-                </header>
-                <div class="content-body no-padding-bottom">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div id="bar"></div>
-                        </div>
-                    </div>
+        <div class="row">
+          <div class="col-sm-6 col-xl-3">
+            <div class="card card-body bg-primary text-white has-bg-image">
+              <div class="media">
+                <div class="media-body">
+                  <h3 class="mb-0" id="br">00</h3>
+                  <span class="text-uppercase font-size-xs">total branches</span>
                 </div>
-            </section>
-        </div>
 
-        <div class="col-lg-4 col-xs-12">
-            <section class="box ">
-                <header class="panel_header">
-                    <h2 class="title pull-left">Overview status</h2>
-                </header>
-                <div class="content-body dist">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="flex justify-content-between pa-7 border-bottom">
-                                <div class="wrapper">
-                                    <p class="mb-0 boldy">Marketing</p>
-                                    <h4 class="boldy">34%</h4>
-                                </div>
-                                <div class="wrapper flex flex-column align-items-center">
-                                    <small class="text-muted mb-5">2019</small>
-                                    <div class="badge badge-pill badge-danger">Mar</div>
-                                </div>
-                            </div>
-                            <div class="flex justify-content-between pa-7 border-bottom">
-                                <div class="wrapper">
-                                    <p class="mb-0 boldy">Human Resources</p>
-                                    <h4 class="boldy">26%</h4>
-                                </div>
-                                <div class="wrapper flex flex-column align-items-center">
-                                    <small class="text-muted mb-5">2019</small>
-                                    <div class="badge badge-pill badge-warning">H&R</div>
-                                </div>
-                            </div>
-                            <div class="flex justify-content-between pa-7 border-bottom">
-                                <div class="wrapper boldy">
-                                    <p class="mb-0">Development</p>
-                                    <h4 class="boldy">48%</h4>
-                                </div>
-                                <div class="wrapper flex flex-column align-items-center">
-                                    <small class="text-muted mb-5">2019</small>
-                                    <div class="badge badge-pill badge-success">Dev</div>
-                                </div>
-                            </div>
-                            <div class="flex justify-content-between pa-7 border-bottom">
-                                <div class="wrapper">
-                                    <p class="mb-0 boldy">User Experince</p>
-                                    <h4 class="boldy">17%</h4>
-                                </div>
-                                <div class="wrapper flex flex-column align-items-center">
-                                    <small class="text-muted mb-5">2019</small>
-                                    <div class="badge badge-pill badge-info">UI/UX</div>
-                                </div>
-                            </div>
-                            <div class="flex justify-content-between pa-7 border-bottom">
-                                <div class="wrapper">
-                                    <p class="mb-0 boldy">Mobile Design</p>
-                                    <h4 class="boldy">56%</h4>
-                                </div>
-                                <div class="wrapper flex flex-column align-items-center">
-                                    <small class="text-muted mb-5">2019</small>
-                                    <div class="badge badge-pill badge-accent">Mob</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="ml-3 align-self-center">
+                  <i class="icon-bubbles4 icon-3x opacity-75"></i>
                 </div>
-            </section>
-        </div>
-
-        <div class="clearfix"></div>
-
-        <div class="col-lg-4 col-xs-12">
-            <section class="box ">
-                <header class="panel_header">
-                    <h2 class="title pull-left">Visitors Source</h2>
-                    <div class="actions panel_actions pull-right">
-                        <a class="box_toggle fa fa-chevron-down"></a>
-                        <a class="box_setting fa fa-cog" data-toggle="modal" href="#section-settings"></a>
-                        <a class="box_close fa fa-times"></a>
-                    </div>
-                </header>
-                <div class="content-body">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div id="donutTop"></div>
-                            <ul class="list-unstyled list-inline">
-                                <li class="flex mb-10 align-items-center"><span class="circle-range blue"></span>
-                                    <h5 class="mb-0 mt-0 boldy">Blog Posts</h5>
-                                </li>
-                                <li class="flex mb-10 align-items-center"><span class="circle-range oran"></span>
-                                    <h5 class="mb-0 mt-0 boldy">External Sources</h5>
-                                </li>
-                                <li class="flex align-items-center"><span class="circle-range purp"></span>
-                                    <h5 class="mb-0 mt-0 boldy">Social Media</h5>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <div class="col-lg-8 col-xs-12">
-            <section class="box ">
-                <header class="panel_header">
-                    <h2 class="title pull-left">Social Media Reach</h2>
-                    <div class="actions panel_actions pull-right">
-                        <a class="box_toggle fa fa-chevron-down"></a>
-                        <a class="box_setting fa fa-cog" data-toggle="modal" href="#section-settings"></a>
-                        <a class="box_close fa fa-times"></a>
-                    </div>
-                </header>
-                <div class="content-body">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div id="bubbleChart"></div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <div class="clearfix"></div>
-
-        <div class="col-lg-3 col-sm-6 col-xs-12">
-            <div class="ref-num-box statistics-box text-center mt-15">
-                <div class="mb-10">
-                    <img src="../data/app-images/f1.png" class="ico-icon-o mt-10 mb-10" alt="">
-                    <h3 class="bold mb-10">31,053</h3>
-                    <p class="mb-10">Total Followers</p>
-                    <p class="mb-0 green-text">4.98%<i class="complete fa fa-arrow-up ml-10"></i></p>
-                </div>
+              </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-sm-6 col-xs-12">
-            <div class="ref-num-box statistics-box text-center mt-15">
-                <div class="mb-10">
-                    <img src="../data/app-images/f2.png" class="ico-icon-o mt-10 mb-10" alt="">
-                    <h3 class="bold mb-10">23.6K</h3>
-                    <p class="mb-10">Users Impression</p>
-                    <p class="mb-0 green-text">7.62%<i class="complete fa fa-arrow-up ml-10"></i></p>
+          </div>
+
+          <div class="col-sm-6 col-xl-3">
+            <div class="card card-body bg-danger text-white has-bg-image">
+              <div class="media">
+                <div class="media-body">
+                  <h3 class="mb-0" id="dept">00</h3>
+                  <span class="text-uppercase font-size-xs">total departments</span>
                 </div>
+
+                <div class="ml-3 align-self-center">
+                  <i class="icon-bag icon-3x opacity-75"></i>
+                </div>
+              </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-sm-6 col-xs-12">
-            <div class="ref-num-box statistics-box text-center mt-15">
-                <div class="mb-10">
-                    <img src="../data/app-images/f3.png" class="ico-icon-o mt-10 mb-10" alt="">
-                    <h3 class="bold mb-10">33.43K</h3>
-                    <p class="mb-10">Ads Reach</p>
-                    <p class="mb-0 green-text">4.98%<i class="complete fa fa-arrow-up ml-10"></i></p>
+          </div>
+
+          <div class="col-sm-6 col-xl-3">
+            <div class="card card-body bg-success text-white has-bg-image">
+              <div class="media">
+                <div class="mr-3 align-self-center">
+                  <i class="icon-pointer icon-3x opacity-75"></i>
                 </div>
+
+                <div class="media-body text-right">
+                  <h3 class="mb-0" id="des">00</h3>
+                  <span class="text-uppercase font-size-xs">total designations</span>
+                </div>
+              </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-sm-6 col-xs-12">
-            <div class="ref-num-box statistics-box text-center mt-15">
-                <div class="mb-10">
-                    <img src="../data/app-images/f4.png" class="ico-icon-o mt-10 mb-10" alt="">
-                    <h3 class="bold mb-10">27.3%</h3>
-                    <p class="mb-10">Engagement Rate</p>
-                    <p class="mb-0 red-text">6.34%<i class="cancelled fa fa-arrow-down ml-10"></i></p>
+          </div>
+
+          <div class="col-sm-6 col-xl-3">
+            <div class="card card-body bg-indigo text-white has-bg-image">
+              <div class="media">
+                <div class="mr-3 align-self-center">
+                  <i class="icon-enter6 icon-3x opacity-75"></i>
                 </div>
+
+                <div class="media-body text-right">
+                  <h3 class="mb-0" id="emp">00</h3>
+                  <span class="text-uppercase font-size-xs">total employees</span>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
-
-        <div class="clearfix"></div>
-
-        <div class="col-lg-12">
-            <section class="box">
-                <header class="panel_header">
-                    <h2 class="title pull-left">Recent Orders Queue</h2>
-                    <div class="actions panel_actions pull-right">
-                        <a class="box_toggle fa fa-chevron-down"></a>
-                        <a class="box_setting fa fa-cog" data-toggle="modal" href="#section-settings"></a>
-                        <a class="box_close fa fa-times"></a>
-                    </div>
-                </header>
-                <div class="content-body">
-                    <div class="row">
-                        <div class="col-xs-12">
-
-                            <div class="table-responsive" data-pattern="priority-columns">
-                                <table id="tech-companies-1" class="table vm table-small-font no-mb table-bordered table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>Product</th>
-                                            <th>Order No.</th>
-                                            <th>Customer</th>
-                                            <th>Status</th>
-                                            <th>Ratings</th>
-                                            <th>Quantity</th>
-                                            <th>Bills</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="round img2">
-                                                    <span class="colored-block gradient-blue"></span>
-                                                </div>
-                                                <div class="designer-info">
-                                                    <h6>Mobile Game</h6>
-                                                    <small class="text-muted">Swift, Python, Java SDK</small>
-                                                </div>
-                                            </td>
-                                            <td>#45202</td>
-                                            <td>Fady solima</td>
-                                            <td><span class="badge badge-md w-70 round-success">Paid</span></td>
-                                            <td class="doc-rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <span>4.8</span>
-                                            </td>
-                                            <td class="text-center">7</td>
-                                            <td>$320</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="round img2">
-                                                    <span class="colored-block gradient-pink"></span>
-                                                </div>
-                                                <div class="designer-info">
-                                                    <h6>B2B2C Solutions</h6>
-                                                    <small class="text-muted">ASP.NET, Ruby, Python</small>
-                                                </div>
-                                            </td>
-                                            <td>#45204</td>
-                                            <td>Gandy Alien</td>
-                                            <td><span class="badge badge-md w-70 round-success">Paid</span></td>
-                                            <td class="doc-rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <span>4.8</span>
-                                            </td>
-                                            <td class="text-center">10</td>
-                                            <td>$170</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="round img2">
-                                                    <span class="colored-block gradient-green"></span>
-                                                </div>
-                                                <div class="designer-info">
-                                                    <h6>HTML Templates</h6>
-                                                    <small class="text-muted">HTML, CSS, JS</small>
-                                                </div>
-                                            </td>
-                                            <td>#45459</td>
-                                            <td>Junior Smith</td>
-                                            <td><span class="badge badge-md w-70 round-danger">Failed</span></td>
-                                            <td class="doc-rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <span>4.8</span>
-                                            </td>
-                                            <td class="text-center">5</td>
-                                            <td>$86</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="round img2">
-                                                    <span class="colored-block gradient-violet"></span>
-                                                </div>
-                                                <div class="designer-info">
-                                                    <h6>Back-end Plugins</h6>
-                                                    <small class="text-muted">PHP, Ruby, C#, ASP.NET</small>
-                                                </div>
-                                            </td>
-                                            <td>#45206</td>
-                                            <td>Flaion fanzzy</td>
-                                            <td><span class="badge badge-md w-70 round-warning">Pending</span></td>
-                                            <td class="doc-rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <span>4.8</span>
-                                            </td>
-                                            <td class="text-center">19</td>
-                                            <td>$433</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="round img2">
-                                                    <span class="colored-block gradient-orange"></span>
-                                                </div>
-                                                <div class="designer-info">
-                                                    <h6>Admin Dashboards</h6>
-                                                    <small class="text-muted">Bootsrap, CSS, SCSS, AngularJS</small>
-                                                </div>
-                                            </td>
-                                            <td> #45406</td>
-                                            <td> Light Ads</td>
-                                            <td><span class="badge badge-md w-70 round-success">Paid</span></td>
-                                            <td class="doc-rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <span>4.8</span>
-                                            </td>
-                                            <td class="text-center">10</td>
-                                            <td>$162</td>
-                                        </tr>
-
-
-                                    </tbody>
-                                </table>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-        </div>
-
-        <div class="clearfix"></div>
-
-
-        <!-- MAIN CONTENT AREA ENDS -->
+      </div>
+      <!-- /content area -->
     </div>
-</div>
-<!-- END CONTENT -->
-{% include 'base/foot.html' %}
+    <!-- /inner content -->
+  </div>
+  <!-- Page content -->
+  </div>
+<script>
+  console.log('jlk')
+  async function fetchMainHeader() {
+    const response = await fetch('http://127.0.0.1:8000/dashboard-headers');
+    // waits until the request completes...
+    response.json().then((res) => {
+      let data = JSON.parse(res)
+      document.getElementById('emp').innerHTML = data["emp_count"]
+      document.getElementById('des').innerHTML = data["des_count"]
+      document.getElementById('dept').innerHTML = data["dept_count"]
+      document.getElementById('br').innerHTML = data["branch_count"]
+
+
+    });
+  }
+  document.addEventListener('DOMContentLoaded', function () {
+    console.log('jlk')
+    fetchMainHeader();
+  });
+
+</script>
+</html>

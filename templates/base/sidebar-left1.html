@@ -1,0 +1,98 @@
+{% load static %}
+<style>
+  .logo-styles {
+    background: white;
+    border-radius: 50%;
+    border: 5px solid #f47621;
+    padding: 10px;
+  }
+  .logo-styles img {
+    height: 5.375rem;
+    width: auto;
+    margin-top: 0.1875rem;
+    margin-bottom: 0.1875rem;
+  }
+</style>
+<div class="sidebar sidebar-dark sidebar-main sidebar-expand-xl">
+  <!-- Sidebar content -->
+  <div class="sidebar-content">
+    <!-- User menu -->
+    <div class="sidebar-section sidebar-user my-1">
+      <div class="sidebar-section-body">
+        <div class="media">
+          <a href="{% url 'dashboard' %}" class="mr-3 logo-styles">
+            <img
+              src="{% static 'assets/images/main-logo.png' %}"
+              class="rounded-circle"
+              alt=""
+            />
+          </a>
+
+          {% comment %} <div class="media-body">
+            <div class="font-weight-semibold">Victoria Baker</div>
+            <div class="font-size-sm line-height-sm opacity-50">
+              Senior developer
+            </div>
+          </div> {% endcomment %}
+
+          <div class="ml-3 align-self-center">
+            <button
+              type="button"
+              class="btn btn-outline-light-100 text-white border-transparent btn-icon rounded-pill btn-sm sidebar-control sidebar-main-resize d-none d-xl-inline-block"
+            >
+              <i class="icon-transmission"></i>
+            </button>
+
+            <button
+              type="button"
+              class="btn btn-outline-light-100 text-white border-transparent btn-icon rounded-pill btn-sm sidebar-mobile-main-toggle d-xl-none"
+            >
+              <i class="icon-cross2"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /user menu -->
+
+    <!-- Main navigation -->
+    <div class="sidebar-section">
+      <ul class="nav nav-sidebar" data-nav-type="accordion">
+        <!-- Main -->
+        <li class="nav-item-header">
+          <div class="text-uppercase font-size-xs line-height-xs">Main</div>
+          <i class="icon-menu" title="Main"></i>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'dashboard' %}" class="nav-link">
+            <i class="icon-home4"></i>
+            <span> Dashboard </span>
+          </a>
+        </li>
+        <li class="nav-item nav-item-submenu">
+          <a href="{% url 'create_company_setup' %}" class="nav-link"><i class="icon-copy"></i> <span>General Settings</span></a>
+        </li>
+        <li class="nav-item nav-item-submenu">
+          <a href="{% url 'create_company_employee' %}" class="nav-link"><i class="icon-copy"></i> <span>Employee App</span></a>
+        </li>
+        <li class="nav-item nav-item-submenu">
+          <a href="{% url 'create_employee_basic_salarie' %}" class="nav-link"><i class="icon-copy"></i> <span>Payroll App</span></a>
+        </li>
+        <li class="nav-item nav-item-submenu">
+          <a href="{% url 'create_requesttype' %}" class="nav-link"><i class="icon-copy"></i> <span>Request App</span></a>
+        </li>
+        <li class="nav-item nav-item-submenu">
+          <a href="{% url 'create_shift' %}" class="nav-link"><i class="icon-copy"></i> <span>Attendance App</span></a>
+        </li>
+        <li class="nav-item nav-item-submenu">
+          <a href="{% url 'create_file_uploading' %}" class="nav-link"><i class="icon-copy"></i> <span>Bulk Upload App</span></a>
+        </li>
+          </ul>
+        </li>
+        <!-- /page kits -->
+      </ul>
+    </div>
+    <!-- /main navigation -->
+  </div>
+  <!-- /sidebar content -->
+</div>

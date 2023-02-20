@@ -1,367 +1,466 @@
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
+<html lang="en" {% if request.session.hrms_language == 'ar' %} dir="rtl" {% else %} dir="ltr" {% endif %}> {{ request.session.name }}
 
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+         <link rel="icon" href="{% static 'assets/images/main-logo.png'%}">
+        <title>ABAN HRMS</title>
+      
+        <!-- Global stylesheets -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+        <link href="{% static 'global_assets/css/icons/icomoon/styles.min.css' %}" rel="stylesheet" type="text/css">
+        {% if request.session.hrms_language == 'ar' %}
+        <link href="{% static 'assets/RTL/css/all.min.css' %}" rel="stylesheet" type="text/css">
+        {% else %}
+        <link href="{% static 'assets/css/all.min.css' %}" rel="stylesheet" type="text/css">
 
-<!-- Mirrored from dashtic.netlify.app/html-dash/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 05 Jul 2022 11:30:24 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
-<head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Dashboard - Multipurpose Dash </title>
-    <meta content="" name="description" />
-    <meta content="" name="author" />
+        {% endif %}
+        <link href="{% static 'global_assets/css/icons/icomoon/styles.min.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'global_assets/css/icons/fontawesome/styles.min.css' %}" rel="stylesheet" type="text/css">
+        <!-- /global stylesheets -->
+      
+        <!-- Core JS files -->
+        <script src="{% static 'global_assets/js/main/jquery.min.js' %}"></script>
+        <script src="{% static 'global_assets/js/main/bootstrap.bundle.min.js' %}"></script>
+        <!-- /core JS files -->
+      
+        <!-- Theme JS files -->
+        <script src="{% static 'global_assets/js/plugins/visualization/d3/d3.min.js' %}"></script>
+        <script src="{% static 'global_assets/js/plugins/visualization/d3/d3_tooltip.js' %}"></script>
+        <script src="{% static 'global_assets/js/plugins/ui/moment/moment.min.js' %}"></script>
+        <script src="{% static 'global_assets/js/plugins/pickers/daterangepicker.js' %}"></script>
+      
+         {% if request.session.hrms_language == 'ar' %}
+        <script src="{% static 'assets/RTL/js/app.js' %}"></script>
+        {% else %}
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="{% static 'assets/images/favicon.png' %}" type="image/x-icon" />
-    <!-- For iPhone -->
-    <link rel="apple-touch-icon-precomposed" href="{% static 'assets/images/apple-touch-icon-57-precomposed.png' %}">
-    <!-- For iPhone 4 Retina display -->
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static 'assets/images/apple-touch-icon-114-precomposed.png' %}">
-    <!-- For iPad -->
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static 'assets/images/apple-touch-icon-72-precomposed.png' %}">
-    <!-- For iPad Retina display -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static 'assets/images/apple-touch-icon-144-precomposed.png' %}">
+        <script src="{% static 'assets/js/app.js' %}"></script>
+        {% endif %}
+        <script src="{% static 'global_assets/js/demo_pages/dashboard.js' %}"></script>
+        <script src="{% static 'global_assets/js/demo_charts/pages/dashboard/light/streamgraph.js' %}"></script>
+        <script src="{% static 'global_assets/js/demo_charts/pages/dashboard/light/sparklines.js' %}"></script>
+        <script src="{% static 'global_assets/js/demo_charts/pages/dashboard/light/lines.js' %}"></script>	
+        <script src="{% static 'global_assets/js/demo_charts/pages/dashboard/light/areas.js' %}"></script>
+        <script src="{% static 'global_assets/js/demo_charts/pages/dashboard/light/donuts.js' %}"></script>
+        <script src="{% static 'global_assets/js/demo_charts/pages/dashboard/light/bars.js' %}"></script>
+        <script src="{% static 'global_assets/js/demo_charts/pages/dashboard/light/progress.js' %}"></script>
+        <script src="{% static 'global_assets/js/demo_charts/pages/dashboard/light/heatmaps.js' %}"></script>
+        <script src="{% static 'global_assets/js/demo_charts/pages/dashboard/light/pies.js' %}"></script>
+        <script src="{% static 'global_assets/js/demo_charts/pages/dashboard/light/bullets.js' %}"></script>
+        <script src="{% static 'global_assets/js/plugins/tables/datatables/datatables.min.js' %}"></script>
 
-    <!-- CORE CSS FRAMEWORK - START -->
-    <link href="{% static 'assets/plugins/pace/pace-theme-flash.css' %}" rel="stylesheet" type="text/css" media="screen" />
-    <link href="{% static 'assets/plugins/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
-    <link href="{% static 'assets/plugins/bootstrap/css/bootstrap-theme.min.css' %}" rel="stylesheet" type="text/css" />
-    <link href="{% static 'assets/fonts/font-awesome/css/font-awesome.css' %}" rel="stylesheet" type="text/css" />
-    <link href="{% static 'assets/fonts/webfont/cryptocoins.css' %}" rel="stylesheet" type="text/css" />
-    <link href="{% static 'assets/css/animate.min.css' %}" rel="stylesheet" type="text/css" />
-    <link href="{% static 'assets/plugins/perfect-scrollbar/perfect-scrollbar.css' %}" rel="stylesheet" type="text/css" />
-    <!-- CORE CSS FRAMEWORK - END -->
+        <script src="{% static 'global_assets/js/demo_pages/datatables_api.js' %}"></script>
+    
+        <!-- /theme JS files -->
+        <style>
+          thead, tbody {
+            font-size: 12px;
+          }
+        </style>
+      </head>
 
-    <!-- HEADER SCRIPTS INCLUDED ON THIS PAGE - START -->
-    <link href="{% static 'assets/plugins/jvectormap/jquery-jvectormap-2.0.1.css' %}" rel="stylesheet" type="text/css" media="screen">
-    <link href="{% static 'assets/plugins/icheck/skins/all.css' %}" rel="stylesheet" type="text/css" media="screen">
-    <!-- HEADER SCRIPTS INCLUDED ON THIS PAGE - END -->
+  <body>
+    <!-- Main navbar -->
+    <div class="navbar navbar-expand-xl navbar-dark bg-indigo navbar-static">
+      <div class="d-flex flex-1 d-xl-none">
+       
+        <button type="button" class="navbar-toggler sidebar-mobile-main-toggle">
+           <i class="icon-paragraph-justify3"></i>
+        </button>
+     
+      </div>
 
-    <!-- CORE CSS TEMPLATE - START -->
-    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet" type="text/css" />
-    <link href="{% static 'assets/css/responsive.css' %}" rel="stylesheet" type="text/css" />
-    <!-- CORE CSS TEMPLATE - END -->
+      <div class="navbar-brand text-center text-xl-center ">
+        SWITCH TO GERMAN
+       {% comment %} <a href="{% url 'toggle_lang' %}" class="d-inline-block"> {% endcomment %}
+          {% comment %} <img
+            src="../../../../global_assets/images/logo_light.png"
+            class="d-none d-sm-block"
+            alt=""
+          />
+          <img
+            src="../../../../global_assets/images/logo_icon_light.png"
+            class="d-sm-none"
+            alt=""
+          /> {% endcomment %}
+      {% comment %} <span class="badge badge-success"> {{lang_tags.main_header_language_switcher2}}</span> {% endcomment %}
+      <span class="badge badge-success"> 
+        SWITCH TO GERMAN
+      </span>
 
-</head>
-<!-- END HEAD -->
+        </a>
+      </div>
 
-<!-- BEGIN BODY -->
+      <div
+        class="collapse navbar-collapse order-2 order-xl-1"
+        id="navbar-mobile"
+      >
+        <ul class="navbar-nav">
+        
+        </ul>
 
-<body class=" ">
-   <!-- START TOPBAR -->
-    <div class='page-topbar'>
-        <div class='logo-area'>
+        <ul class="navbar-nav ml-xl-auto">
+          {% comment %} <li class="nav-item dropdown">
+            <a href="#" class="navbar-nav-link" data-toggle="dropdown">
+              <i class="icon-people"></i>
+              <span class="d-xl-none ml-3">Messages</span>
+            </a>
 
-        </div>
-        <div class='quick-area'>
-            <div class='pull-left'>
-                <ul class="info-menu left-links list-inline list-unstyled">
-                    <li class="sidebar-toggle-wrap">
-                        <a href="#" data-toggle="sidebar" class="sidebar_toggle">
-                            <i class="fa fa-bars"></i>
-                        </a>
-                    </li>
-                    <li class="message-toggle-wrapper">
-                        <a href="#" data-toggle="dropdown" class="toggle">
-                            <i class="fa fa-envelope"></i>
-                            <span class="badge badge-accent">7</span>
-                        </a>
-                        <ul class="dropdown-menu messages animated fadeIn">
+            <div
+              class="dropdown-menu dropdown-menu-right dropdown-content wmin-xl-300"
+            >
+              <div class="dropdown-content-header">
+                <span class="font-weight-semibold">Users online</span>
+                <a href="#" class="text-body"
+                  ><i class="icon-search4 font-size-base"></i
+                ></a>
+              </div>
 
-                            <li class="list">
+              <div class="dropdown-content-body dropdown-scrollable">
+                <ul class="media-list">
+                  <li class="media">
+                    <div class="mr-3">
+                      <img
+                        src="../../../../global_assets/images/placeholders/placeholder.jpg"
+                        width="36"
+                        height="36"
+                        class="rounded-circle"
+                        alt=""
+                      />
+                    </div>
+                    <div class="media-body">
+                      <a href="#" class="media-title font-weight-semibold"
+                        >Jordana Ansley</a
+                      >
+                      <span class="d-block text-muted font-size-sm"
+                        >Lead web developer</span
+                      >
+                    </div>
+                    <div class="ml-3 align-self-center">
+                      <span class="badge badge-mark border-success"></span>
+                    </div>
+                  </li>
 
-                                <ul class="dropdown-menu-list list-unstyled ps-scrollbar">
-                                    <li class="unread status-available">
-                                        <a href="javascript:;">
-                                            <div class="user-img">
-                                                <img src="{% static 'data/profile/avatar-1.png' %}" alt="user-image" class="img-circle img-inline">
-                                            </div>
-                                            <div>
-                                                <span class="name">
-                                                    <strong>Clarine Vassar</strong>
-                                                    <span class="time small">- 15 mins ago</span>
-                                                <span class="profile-status available pull-right"></span>
-                                                </span>
-                                                <span class="desc small">
-                                                    Lorem ipsum dolor sit elit fugiat molest.
-                                                </span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class=" status-away">
-                                        <a href="javascript:;">
-                                            <div class="user-img">
-                                                <img src="{% static 'data/profile/avatar-2.png' %}" alt="user-image" class="img-circle img-inline">
-                                            </div>
-                                            <div>
-                                                <span class="name">
-                                                    <strong>Brooks Latshaw</strong>
-                                                    <span class="time small">- 45 mins ago</span>
-                                                <span class="profile-status away pull-right"></span>
-                                                </span>
-                                                <span class="desc small">
-                                                    Lorem ipsum dolor sit elit fugiat molest.
-                                                </span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class=" status-busy">
-                                        <a href="javascript:;">
-                                            <div class="user-img">
-                                                <img src="{% static 'data/profile/avatar-3.png' %}" alt="user-image" class="img-circle img-inline">
-                                            </div>
-                                            <div>
-                                                <span class="name">
-                                                    <strong>Clementina Brodeur</strong>
-                                                    <span class="time small">- 1 hour ago</span>
-                                                <span class="profile-status busy pull-right"></span>
-                                                </span>
-                                                <span class="desc small">
-                                                    Lorem ipsum dolor sit elit fugiat molest.
-                                                </span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class=" status-offline">
-                                        <a href="javascript:;">
-                                            <div class="user-img">
-                                                <img src="{% static 'data/profile/avatar-4.png' %}" alt="user-image" class="img-circle img-inline">
-                                            </div>
-                                            <div>
-                                                <span class="name">
-                                                    <strong>Carri Busey</strong>
-                                                    <span class="time small">- 5 hours ago</span>
-                                                <span class="profile-status offline pull-right"></span>
-                                                </span>
-                                                <span class="desc small">
-                                                    Lorem ipsum dolor sit elit fugiat molest.
-                                                </span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class=" status-offline">
-                                        <a href="javascript:;">
-                                            <div class="user-img">
-                                                <img src="{% static 'data/profile/avatar-5.png' %}" alt="user-image" class="img-circle img-inline">
-                                            </div>
-                                            <div>
-                                                <span class="name">
-                                                    <strong>Melissa Dock</strong>
-                                                    <span class="time small">- Yesterday</span>
-                                                <span class="profile-status offline pull-right"></span>
-                                                </span>
-                                                <span class="desc small">
-                                                    Lorem ipsum dolor sit elit fugiat molest.
-                                                </span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class=" status-available">
-                                        <a href="javascript:;">
-                                            <div class="user-img">
-                                                <img src="{% static 'data/profile/avatar-1.png' %}" alt="user-image" class="img-circle img-inline">
-                                            </div>
-                                            <div>
-                                                <span class="name">
-                                                    <strong>Verdell Rea</strong>
-                                                    <span class="time small">- 14th Mar</span>
-                                                <span class="profile-status available pull-right"></span>
-                                                </span>
-                                                <span class="desc small">
-                                                    Lorem ipsum dolor sit elit fugiat molest.
-                                                </span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class=" status-busy">
-                                        <a href="javascript:;">
-                                            <div class="user-img">
-                                                <img src="{% static 'data/profile/avatar-2.png' %}" alt="user-image" class="img-circle img-inline">
-                                            </div>
-                                            <div>
-                                                <span class="name">
-                                                    <strong>Linette Lheureux</strong>
-                                                    <span class="time small">- 16th Mar</span>
-                                                <span class="profile-status busy pull-right"></span>
-                                                </span>
-                                                <span class="desc small">
-                                                    Lorem ipsum dolor sit elit fugiat molest.
-                                                </span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class=" status-away">
-                                        <a href="javascript:;">
-                                            <div class="user-img">
-                                                <img src="{% static 'data/profile/avatar-3.png' %}" alt="user-image" class="img-circle img-inline">
-                                            </div>
-                                            <div>
-                                                <span class="name">
-                                                    <strong>Araceli Boatright</strong>
-                                                    <span class="time small">- 16th Mar</span>
-                                                <span class="profile-status away pull-right"></span>
-                                                </span>
-                                                <span class="desc small">
-                                                    Lorem ipsum dolor sit elit fugiat molest.
-                                                </span>
-                                            </div>
-                                        </a>
-                                    </li>
+                  <li class="media">
+                    <div class="mr-3">
+                      <img
+                        src="../../../../global_assets/images/placeholders/placeholder.jpg"
+                        width="36"
+                        height="36"
+                        class="rounded-circle"
+                        alt=""
+                      />
+                    </div>
+                    <div class="media-body">
+                      <a href="#" class="media-title font-weight-semibold"
+                        >Will Brason</a
+                      >
+                      <span class="d-block text-muted font-size-sm"
+                        >Marketing manager</span
+                      >
+                    </div>
+                    <div class="ml-3 align-self-center">
+                      <span class="badge badge-mark border-danger"></span>
+                    </div>
+                  </li>
 
-                                </ul>
+                  <li class="media">
+                    <div class="mr-3">
+                      <img
+                        src="../../../../global_assets/images/placeholders/placeholder.jpg"
+                        width="36"
+                        height="36"
+                        class="rounded-circle"
+                        alt=""
+                      />
+                    </div>
+                    <div class="media-body">
+                      <a href="#" class="media-title font-weight-semibold"
+                        >Hanna Walden</a
+                      >
+                      <span class="d-block text-muted font-size-sm"
+                        >Project manager</span
+                      >
+                    </div>
+                    <div class="ml-3 align-self-center">
+                      <span class="badge badge-mark border-success"></span>
+                    </div>
+                  </li>
 
-                            </li>
+                  <li class="media">
+                    <div class="mr-3">
+                      <img
+                        src="../../../../global_assets/images/placeholders/placeholder.jpg"
+                        width="36"
+                        height="36"
+                        class="rounded-circle"
+                        alt=""
+                      />
+                    </div>
+                    <div class="media-body">
+                      <a href="#" class="media-title font-weight-semibold"
+                        >Dori Laperriere</a
+                      >
+                      <span class="d-block text-muted font-size-sm"
+                        >Business developer</span
+                      >
+                    </div>
+                    <div class="ml-3 align-self-center">
+                      <span class="badge badge-mark border-warning"></span>
+                    </div>
+                  </li>
 
-                            <li class="external">
-                                <a href="javascript:;">
-                                    <span>Read All Messages</span>
-                                </a>
-                            </li>
-                        </ul>
-
-                    </li>
-                    <li class="notify-toggle-wrapper">
-                        <a href="#" data-toggle="dropdown" class="toggle">
-                            <i class="fa fa-bell"></i>
-                            <span class="badge badge-accent">3</span>
-                        </a>
-                        <ul class="dropdown-menu notifications animated fadeIn">
-                            <li class="total">
-                                <span class="small">
-                                You have <strong>3</strong> new notifications.
-                                <a href="javascript:;" class="pull-right">Mark all as Read</a>
-                            </span>
-                            </li>
-                            <li class="list">
-
-                                <ul class="dropdown-menu-list list-unstyled ps-scrollbar">
-                                    <li class="unread available">
-                                        <!-- available: success, warning, info, error -->
-                                        <a href="javascript:;">
-                                            <div class="notice-icon">
-                                                <i class="fa fa-check"></i>
-                                            </div>
-                                            <div>
-                                                <span class="name">
-                                                    <strong>You just sold an item</strong>
-                                                    <span class="time small">15 mins ago</span>
-                                                </span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class="unread away">
-                                        <!-- available: success, warning, info, error -->
-                                        <a href="javascript:;">
-                                            <div class="notice-icon">
-                                                <i class="fa fa-clock-o"></i>
-                                            </div>
-                                            <div>
-                                                <span class="name">
-                                                    <strong>Product on the Bootstrap Market</strong>
-                                                    <span class="time small">45 mins ago</span>
-                                                </span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class=" busy">
-                                        <!-- available: success, warning, info, error -->
-                                        <a href="javascript:;">
-                                            <div class="notice-icon">
-                                                <i class="fa fa-times"></i>
-                                            </div>
-                                            <div>
-                                                <span class="name">
-                                                    <strong>Cancelled Order of 200 item</strong>
-                                                    <span class="time small">1 hour ago</span>
-                                                </span>
-                                            </div>
-                                        </a>
-                                    </li>
-
-                                    <li class=" available">
-                                        <!-- available: success, warning, info, error -->
-                                        <a href="javascript:;">
-                                            <div class="notice-icon">
-                                                <i class="fa fa-check"></i>
-                                            </div>
-                                            <div>
-                                                <span class="name">
-                                                    <strong>Great server Speed of 1.34Gh </strong>
-                                                    <span class="time small">14th Mar</span>
-                                                </span>
-                                            </div>
-                                        </a>
-                                    </li>
-
-                                </ul>
-
-                            </li>
-
-                            <li class="external">
-                                <a href="javascript:;">
-                                    <span>Read All Notifications</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="hidden-sm hidden-xs searchform">
-                        <form action="#" method="post">
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                <i class="fa fa-search"></i>
-                            </span>
-                                <input type="text" class="form-control animated fadeIn" placeholder="Search & Enter">
-                            </div>
-                            <input type='submit' value="">
-                        </form>
-                    </li>
+                  <li class="media">
+                    <div class="mr-3">
+                      <img
+                        src="../../../../global_assets/images/placeholders/placeholder.jpg"
+                        width="36"
+                        height="36"
+                        class="rounded-circle"
+                        alt=""
+                      />
+                    </div>
+                    <div class="media-body">
+                      <a href="#" class="media-title font-weight-semibold"
+                        >Vanessa Aurelius</a
+                      >
+                      <span class="d-block text-muted font-size-sm"
+                        >UX expert</span
+                      >
+                    </div>
+                    <div class="ml-3 align-self-center">
+                      <span class="badge badge-mark border-secondary"></span>
+                    </div>
+                  </li>
                 </ul>
-            </div>
-            <div class='pull-right'>
-                <ul class="info-menu right-links list-inline list-unstyled">
-                    <li class="profile">
+              </div>
 
-                        <ul class="dropdown-menu profile animated fadeIn">
-                            <li>
-                                <a href="account-confirmation.html">
-                                    <i class="fa fa-wrench"></i> Settings
-                                </a>
-                            </li>
-                            <li>
-                                <a href="ui-profile.html">
-                                    <i class="fa fa-user"></i> Profile
-                                </a>
-                            </li>
-                            <li>
-                                <a href="ui-support.html">
-                                    <i class="fa fa-info"></i> Help
-                                </a>
-                            </li>
-                            <li class="last">
-                                <a href="ui-login.html">
-                                    <i class="fa fa-lock"></i> Logout
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="chat-toggle-wrapper">
-                        <a href="{% url 'login' %}" data-toggle="" class="" style="color:white; margin-right: 10px;">
-                            <i class="fa fa-user"></i>
-                            {% comment %} <i class="fa fa-times"></i> {% endcomment %}
-                        </a>
-                        <a href="#" data-toggle="chatbar" class="toggle_chat">
-                            <i class="fa fa-comments"></i>
-                            <span class="badge badge-accent">9</span>
-                            <i class="fa fa-times"></i>
-                        </a>
-                    </li>
-                </ul>
+              <div class="dropdown-content-footer bg-light">
+                <a href="#" class="text-body mr-auto">All users</a>
+                <a href="#" class="text-body"><i class="icon-gear"></i></a>
+              </div>
             </div>
-        </div>
+          </li> {% endcomment %}
+        </ul>
+      </div>
 
+      <ul
+        class="navbar-nav flex-row order-1 order-xl-2 flex-1 flex-xl-0 justify-content-end align-items-center"
+      >
+        <li class="nav-item nav-item-dropdown-xl dropdown">
+          <a
+            href="#"
+            class="navbar-nav-link navbar-nav-link-toggler"
+            data-toggle="dropdown"
+          >
+            <i class="icon-bubbles4"></i>
+            {% comment %} <span class="badge badge-warning badge-pill ml-auto ml-xl-0"
+              >2</span
+            > {% endcomment %}
+          </a>
+
+          <div
+            class="dropdown-menu dropdown-menu-right dropdown-content wmin-xl-350"
+          >
+            <div class="dropdown-content-header">
+              <span class="font-weight-semibold">NOTIFICATIONS</span>
+              <a href="#" class="text-body"><i class="icon-compose"></i></a>
+            </div>
+
+            <div class="dropdown-content-body dropdown-scrollable">
+              {% comment %} <ul class="media-list">
+                <li class="media">
+                  <div class="mr-3 position-relative">
+                    <img
+                      src="../../../../global_assets/images/placeholders/placeholder.jpg"
+                      width="36"
+                      height="36"
+                      class="rounded-circle"
+                      alt=""
+                    />
+                  </div>
+
+                  <div class="media-body">
+                    <div class="media-title">
+                      <a href="#">
+                        <span class="font-weight-semibold"
+                          >James Alexander</span
+                        >
+                        <span class="text-muted float-right font-size-sm"
+                          >04:58</span
+                        >
+                      </a>
+                    </div>
+
+                    <span class="text-muted"
+                      >who knows, maybe that would be the best thing for
+                      me...</span
+                    >
+                  </div>
+                </li>
+
+                <li class="media">
+                  <div class="mr-3 position-relative">
+                    <img
+                      src="../../../../global_assets/images/placeholders/placeholder.jpg"
+                      width="36"
+                      height="36"
+                      class="rounded-circle"
+                      alt=""
+                    />
+                  </div>
+
+                  <div class="media-body">
+                    <div class="media-title">
+                      <a href="#">
+                        <span class="font-weight-semibold">Margo Baker</span>
+                        <span class="text-muted float-right font-size-sm"
+                          >12:16</span
+                        >
+                      </a>
+                    </div>
+
+                    <span class="text-muted"
+                      >That was something he was unable to do because...</span
+                    >
+                  </div>
+                </li>
+
+                <li class="media">
+                  <div class="mr-3">
+                    <img
+                      src="../../../../global_assets/images/placeholders/placeholder.jpg"
+                      width="36"
+                      height="36"
+                      class="rounded-circle"
+                      alt=""
+                    />
+                  </div>
+                  <div class="media-body">
+                    <div class="media-title">
+                      <a href="#">
+                        <span class="font-weight-semibold"
+                          >Jeremy Victorino</span
+                        >
+                        <span class="text-muted float-right font-size-sm"
+                          >22:48</span
+                        >
+                      </a>
+                    </div>
+
+                    <span class="text-muted"
+                      >But that would be extremely strained and
+                      suspicious...</span
+                    >
+                  </div>
+                </li>
+
+                <li class="media">
+                  <div class="mr-3">
+                    <img
+                      src="../../../../global_assets/images/placeholders/placeholder.jpg"
+                      width="36"
+                      height="36"
+                      class="rounded-circle"
+                      alt=""
+                    />
+                  </div>
+                  <div class="media-body">
+                    <div class="media-title">
+                      <a href="#">
+                        <span class="font-weight-semibold">Beatrix Diaz</span>
+                        <span class="text-muted float-right font-size-sm"
+                          >Tue</span
+                        >
+                      </a>
+                    </div>
+
+                    <span class="text-muted"
+                      >What a strenuous career it is that I've chosen...</span
+                    >
+                  </div>
+                </li>
+
+                <li class="media">
+                  <div class="mr-3">
+                    <img
+                      src="../../../../global_assets/images/placeholders/placeholder.jpg"
+                      width="36"
+                      height="36"
+                      class="rounded-circle"
+                      alt=""
+                    />
+                  </div>
+                  <div class="media-body">
+                    <div class="media-title">
+                      <a href="#">
+                        <span class="font-weight-semibold">Richard Vango</span>
+                        <span class="text-muted float-right font-size-sm"
+                          >Mon</span
+                        >
+                      </a>
+                    </div>
+
+                    <span class="text-muted"
+                      >Other travelling salesmen live a life of luxury...</span
+                    >
+                  </div>
+                </li>
+              </ul> {% endcomment %}
+            </div>
+
+            <div class="dropdown-content-footer justify-content-center p-0">
+              <a
+                href="#"
+                class="btn btn-light btn-block border-0 rounded-top-0"
+                data-popup="tooltip"
+                title="Load more"
+                ><i class="icon-menu7"></i
+              ></a>
+            </div>
+          </div>
+        </li>
+
+        <li class="nav-item nav-item-dropdown-xl dropdown dropdown-user">
+          <a
+            href="#"
+            class="navbar-nav-link navbar-nav-link-toggler dropdown-toggle d-inline-flex align-items-center h-100"
+            data-toggle="dropdown"
+          >
+            {% comment %} <img
+              src="../../../../global_assets/images/placeholders/placeholder.jpg"
+              class="rounded-pill mr-xl-2"
+              height="34"
+              alt=""
+            /> {% endcomment %}
+            <span class="d-none d-xl-inline-block">Hello {{request.user.username}}</span>
+          </a>
+
+          <div class="dropdown-menu dropdown-menu-right">
+            {% comment %} <a href="#" class="dropdown-item"
+              ><i class="icon-user-plus"></i> My profile</a
+            >
+            <a href="#" class="dropdown-item"
+              ><i class="icon-coins"></i> My balance</a
+            > 
+            <a href="#" class="dropdown-item"
+              ><i class="icon-comment-discussion"></i> Messages
+              <span class="badge badge-primary badge-pill ml-auto">58</span></a
+            >
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item"
+              ><i class="icon-cog5"></i> Account settings</a
+            > {% endcomment %}
+            <a href="{% url 'logout' %}" class="dropdown-item"
+              ><i class="icon-switch2"></i> Logout</a
+            >
+          </div>
+        </li>
+      </ul>
     </div>
-    <!-- END TOPBAR -->
-    <!-- START CONTAINER -->
-    <div class="page-container row-fluid container-fluid">
+    <!-- /main navbar -->
+
+    <!-- Page content -->
+    <div class="page-content">

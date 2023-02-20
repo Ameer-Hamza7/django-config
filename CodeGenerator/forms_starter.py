@@ -7,17 +7,17 @@ def write_forms_file(MODEL, STRUCTURED_STR):
     with open(f'{MODEL}_form.html', 'a') as f:
         f.write(STRUCTURED_STR)
 
+
 def ConstructFormHtml(MODEL, *args):
     fields = ''''''
     for x in args:
         fields += f'''
-        
             <div class="col-xs-6" style="margin-bottom : 20px;">
                 [% render_field form.{x} class="form-control mb-2" placeholder="{x.replace('_', ' ').upper()}" %]
             </div>
         '''
 
-    STRING =  f'''
+    STRING = f'''
 [% load widget_tweaks %] [% load static %] [% include 'base/head.html' %] [% include 'base/sidebar.html' %] [% include 'base/sidebar.html' %]
 
 <!-- START CONTENT -->
@@ -66,3 +66,12 @@ def ConstructFormHtml(MODEL, *args):
 [% include 'base/foot.html' %]
             '''
     write_forms_file(MODEL, STRING)
+
+
+ConstructFormHtml(
+    'biometric_machine',
+    'serial_no',
+    'brand',
+    'location',
+    'branch'
+)

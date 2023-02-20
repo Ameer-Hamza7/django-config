@@ -1,0 +1,389 @@
+
+  {% load widget_tweaks %}
+{% load static %} {% include 'base/head.html' %} {% include 'base/sidebar-left.html' %}
+    <!-- Main content -->
+    <div class="content-wrapper">
+      <div class="page-header page-header-light">
+        <ul class="nav nav-tabs nav-tabs-bottom" style="margin-bottom: 0px">
+          
+  
+          <li class="nav-item">
+              <a href="{% url 'create_disciplinary_action' %}" class="nav-link active">
+                  DISCIPLINARY ACTIONS
+              </a>
+          </li>
+      
+        </ul>
+      </div>
+
+      <!-- Inner content -->
+      <div class="content-inner">
+        <!-- Content area -->
+        <div class="content">
+          <!-- Course overview -->
+          <div class="card">
+            <div class="card-header header-elements-lg-inline">
+              <h5 class="card-title">DISCIPLINARY ACTION</h5>
+
+              <div class="header-elements">
+                <button
+                  class="btn btn-success"
+                  style="margin-right: 5px"
+                  onclick="printPage()"
+                >
+                  <i class="fas fa-eye fa-xl"></i>
+                </button>
+                <a href="{% url 'update_disciplinary_action' data.id %}">
+                  <button class="btn btn-secondary" style="margin-right: 5px">
+                    <i class="fas fa-edit fa-xl"></i>
+                  </button>
+                </a>
+                <a href="{% url 'delete_disciplinary_action' data.id %}">
+                  <button class="btn btn-danger" style="margin-right: 5px">
+                    <i class="fas fa-trash fa-xl"></i>
+                  </button>
+                </a>
+              </div>
+            </div>
+
+            <div class="nav-tabs-responsive bg-light border-top"></div>
+
+            <div class="tab-content">
+              <div class="tab-pane fade show active" id="course-overview">
+                <div class="card-body">
+                  <div class="row">
+                    
+  
+          <div class="col-sm-6">
+            <div class="mb-4">
+              <dl>
+                <dt
+                  class="font-size-sm font-weight-bold text-uppercase"
+                >
+                  EMPLOYEE
+                </dt>
+                <dd>
+                  {{data.employee}}
+                </dd>
+              </dl>
+            </div>
+          </div>
+    
+          <div class="col-sm-6">
+            <div class="mb-4">
+              <dl>
+                <dt
+                  class="font-size-sm font-weight-bold text-uppercase"
+                >
+                  EMP CL ID
+                </dt>
+                <dd>
+                  {{data.emp_cl_id}}
+                </dd>
+              </dl>
+            </div>
+          </div>
+    
+          <div class="col-sm-6">
+            <div class="mb-4">
+              <dl>
+                <dt
+                  class="font-size-sm font-weight-bold text-uppercase"
+                >
+                  EMP POS
+                </dt>
+                <dd>
+                  {{data.emp_pos}}
+                </dd>
+              </dl>
+            </div>
+          </div>
+    
+          <div class="col-sm-6">
+            <div class="mb-4">
+              <dl>
+                <dt
+                  class="font-size-sm font-weight-bold text-uppercase"
+                >
+                  MANAGER
+                </dt>
+                <dd>
+                  {{data.manager}}
+                </dd>
+              </dl>
+            </div>
+          </div>
+    
+          <div class="col-sm-6">
+            <div class="mb-4">
+              <dl>
+                <dt
+                  class="font-size-sm font-weight-bold text-uppercase"
+                >
+                  MANAGER CL ID
+                </dt>
+                <dd>
+                  {{data.manager_cl_id}}
+                </dd>
+              </dl>
+            </div>
+          </div>
+    
+          <div class="col-sm-6">
+            <div class="mb-4">
+              <dl>
+                <dt
+                  class="font-size-sm font-weight-bold text-uppercase"
+                >
+                  EMP POS
+                </dt>
+                <dd>
+                  {{data.emp_pos}}
+                </dd>
+              </dl>
+            </div>
+          </div>
+    
+          <div class="col-sm-6">
+            <div class="mb-4">
+              <dl>
+                <dt
+                  class="font-size-sm font-weight-bold text-uppercase"
+                >
+                  INFRACTION DATE
+                </dt>
+                <dd>
+                  {{data.infraction_date}}
+                </dd>
+              </dl>
+            </div>
+          </div>
+    
+          <div class="col-sm-6">
+            <div class="mb-4">
+              <dl>
+                <dt
+                  class="font-size-sm font-weight-bold text-uppercase"
+                >
+                  INFRACTION TIME
+                </dt>
+                <dd>
+                  {{data.infraction_time}}
+                </dd>
+              </dl>
+            </div>
+          </div>
+    
+          <div class="col-sm-6">
+            <div class="mb-4">
+              <dl>
+                <dt
+                  class="font-size-sm font-weight-bold text-uppercase"
+                >
+                  INFRACTION PLACE
+                </dt>
+                <dd>
+                  {{data.infraction_place}}
+                </dd>
+              </dl>
+            </div>
+          </div>
+    
+          <div class="col-sm-6">
+            <div class="mb-4">
+              <dl>
+                <dt
+                  class="font-size-sm font-weight-bold text-uppercase"
+                >
+                  INFRACTION DESC
+                </dt>
+                <dd>
+                  {{data.infraction_desc}}
+                </dd>
+              </dl>
+            </div>
+          </div>
+    
+          <div class="col-sm-6">
+            <div class="mb-4">
+              <dl>
+                <dt
+                  class="font-size-sm font-weight-bold text-uppercase"
+                >
+                  EMP STAT
+                </dt>
+                <dd>
+                  {{data.emp_stat}}
+                </dd>
+              </dl>
+            </div>
+          </div>
+    
+          <div class="col-sm-6">
+            <div class="mb-4">
+              <dl>
+                <dt
+                  class="font-size-sm font-weight-bold text-uppercase"
+                >
+                  PROPOSED CORRECTIVE ACTION
+                </dt>
+                <dd>
+                  {{data.proposed_corrective_action}}
+                </dd>
+              </dl>
+            </div>
+          </div>
+    
+          <div class="col-sm-6">
+            <div class="mb-4">
+              <dl>
+                <dt
+                  class="font-size-sm font-weight-bold text-uppercase"
+                >
+                  EMPLOYEE PRINT NAME
+                </dt>
+                <dd>
+                  {{data.employee_print_name}}
+                </dd>
+              </dl>
+            </div>
+          </div>
+    
+          <div class="col-sm-6">
+            <div class="mb-4">
+              <dl>
+                <dt
+                  class="font-size-sm font-weight-bold text-uppercase"
+                >
+                  EMPLOYEE SIG
+                </dt>
+                <dd>
+                  {{data.employee_sig}}
+                </dd>
+              </dl>
+            </div>
+          </div>
+    
+          <div class="col-sm-6">
+            <div class="mb-4">
+              <dl>
+                <dt
+                  class="font-size-sm font-weight-bold text-uppercase"
+                >
+                  EMP SIG DATE
+                </dt>
+                <dd>
+                  {{data.emp_sig_date}}
+                </dd>
+              </dl>
+            </div>
+          </div>
+    
+          <div class="col-sm-6">
+            <div class="mb-4">
+              <dl>
+                <dt
+                  class="font-size-sm font-weight-bold text-uppercase"
+                >
+                  MANAGER PRINT NAME
+                </dt>
+                <dd>
+                  {{data.manager_print_name}}
+                </dd>
+              </dl>
+            </div>
+          </div>
+    
+          <div class="col-sm-6">
+            <div class="mb-4">
+              <dl>
+                <dt
+                  class="font-size-sm font-weight-bold text-uppercase"
+                >
+                  MANAGER SIG
+                </dt>
+                <dd>
+                  {{data.manager_sig}}
+                </dd>
+              </dl>
+            </div>
+          </div>
+    
+          <div class="col-sm-6">
+            <div class="mb-4">
+              <dl>
+                <dt
+                  class="font-size-sm font-weight-bold text-uppercase"
+                >
+                  MANAGER SIG DATE
+                </dt>
+                <dd>
+                  {{data.manager_sig_date}}
+                </dd>
+              </dl>
+            </div>
+          </div>
+    
+          <div class="col-sm-6">
+            <div class="mb-4">
+              <dl>
+                <dt
+                  class="font-size-sm font-weight-bold text-uppercase"
+                >
+                  HR PRINT NAME
+                </dt>
+                <dd>
+                  {{data.hr_print_name}}
+                </dd>
+              </dl>
+            </div>
+          </div>
+    
+          <div class="col-sm-6">
+            <div class="mb-4">
+              <dl>
+                <dt
+                  class="font-size-sm font-weight-bold text-uppercase"
+                >
+                  HR SIG
+                </dt>
+                <dd>
+                  {{data.hr_sig}}
+                </dd>
+              </dl>
+            </div>
+          </div>
+    
+          <div class="col-sm-6">
+            <div class="mb-4">
+              <dl>
+                <dt
+                  class="font-size-sm font-weight-bold text-uppercase"
+                >
+                  HR SIG DATE
+                </dt>
+                <dd>
+                  {{data.hr_sig_date}}
+                </dd>
+              </dl>
+            </div>
+          </div>
+    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /course overview -->
+        </div>
+        <!-- /content area -->
+      </div>
+      <!-- /inner content -->
+    </div>
+    <!-- /main content -->
+  <script>
+    function printPage() {
+      print();
+    }
+  </script>
+  <!-- /page content -->

@@ -46,6 +46,9 @@ def ConstructFormHtml(MODEL, *args):
 
 
 ConstructFormHtml(
-    'RequestType',
-    'request_type'
+    'biometric_machine',
+    'serial_no',
+    'brand',
+    'location',
+    'branch'
 )

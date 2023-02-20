@@ -1,0 +1,191 @@
+{% load static %}
+<style>
+  .logo-styles {
+    background: white;
+    border-radius: 50%;
+    border: 5px solid #f47621;
+    padding: 10px;
+  }
+  .logo-styles img {
+    height: 5.375rem;
+    width: auto;
+    margin-top: 0.1875rem;
+    margin-bottom: 0.1875rem;
+  }
+  .btn.btn-success, .btn.btn-secondary, .btn.btn-danger {
+    font-size: 12px!important; 
+    margin-right: 3px!important;
+    padding: 6px!important;
+  } 
+  .btn.btn-success i, .btn.btn-secondary i, .btn.btn-danger i {
+    font-size: 14px!important;
+  }
+</style>
+<div class="sidebar sidebar-dark sidebar-main  sidebar-expand-xl" style="background-color:#ffffff">
+  <!-- Sidebar content -->
+  <div class="sidebar-content">
+    <!-- User menu -->
+    <div class="sidebar-section sidebar-user my-1">
+      <div class="sidebar-section-body">
+        <div class="media">
+          {% comment %} <a href="{% url 'dashboard' %}" class="mr-3 logo-styles">
+            <img
+              src="{% static 'assets/images/main-logo.png' %}"
+              class="rounded-circle"
+              alt=""
+            />
+          </a> {% endcomment %}
+
+          {% comment %} <div class="media-body">
+            <div class="font-weight-semibold">Victoria Baker</div>
+            <div class="font-size-sm line-height-sm opacity-50">
+              Senior developer
+            </div>
+          </div> {% endcomment %}
+
+          <div class="ml-3 align-self-center">
+            <button
+              type="button"
+              class="btn btn-outline-dark-100 text-indigo text-white border-transparent btn-icon rounded-pill btn-sm sidebar-control sidebar-main-resize d-none d-xl-inline-block"
+            >
+              <i class="icon-transmission"></i>
+            </button>
+
+            <button
+              type="button"
+              class="btn btn-outline-dark-100 text-indigo text-white border-transparent btn-icon rounded-pill btn-sm sidebar-mobile-main-toggle d-xl-none"
+            >
+              <i class="icon-cross2"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /user menu -->
+
+    <!-- Main navigation -->
+     {% comment %} {% if request.session.hrms_language == 'eng' %}  {% endcomment %}
+    <div class="sidebar-section">
+      <ul class="nav nav-sidebar" data-nav-type="accordion">
+        <!-- Main -->
+        {% comment %} <li class="nav-item-header">
+          <div class="text-uppercase font-size-xs line-height-xs text-indigo">{{lang_tags.sidebar_main}}</div>
+          <i class="icon-menu" title="Main"></i>
+        </li> {% endcomment %}
+        <li class="nav-item">
+          <a href="" class="nav-link text-indigo">
+            <i class="icon-home4  text-indigo"></i>
+            <span class=" text-dark"> Dashboard </span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'registration' %}" class="nav-link text-indigo">
+            <i class="icon-home4  text-indigo"></i>
+            <span class=" text-dark"> Users </span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'groups-perms' %}" class="nav-link text-indigo">
+            <i class="icon-home4  text-indigo"></i>
+            <span class=" text-dark"> Groups </span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="" class="nav-link text-indigo">
+            <i class="icon-home4  text-indigo"></i>
+            <span class=" text-dark"> Customer </span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="" class="nav-link text-indigo">
+            <i class="icon-home4  text-indigo"></i>
+            <span class=" text-dark"> Inquiries </span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="" class="nav-link text-indigo">
+            <i class="icon-home4  text-indigo"></i>
+            <span class=" text-dark"> Invoices </span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="" class="nav-link text-indigo">
+            <i class="icon-home4  text-indigo"></i>
+            <span class=" text-dark"> Reports </span>
+          </a>
+        </li>
+
+          </ul>
+        </li>
+        <!-- /page kits -->
+      </ul>
+    </div> 
+    {% comment %} {% elif request.session.hrms_language == 'ar' %} {% endcomment %}
+    {% comment %} <div class="sidebar-section">
+      <ul class="nav nav-sidebar" data-nav-type="accordion">
+        <!-- Main -->
+        <li class="nav-item-header">
+          <div class="text-uppercase font-size-xs line-height-xs text-indigo">{{lang_tags.sidebar_main}}</div>
+          <i class="icon-menu" title="Main"></i>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'dashboard' %}" class="nav-link text-indigo">
+            <i class="icon-home4  text-indigo"></i>
+            <span class=" text-dark"> {{lang_tags.sidebar_dashboard}} </span>
+          </a>
+        </li>
+        <li class="nav-item nav-item-submenu">
+          <a href="{% url 'create_file_uploading' %}" class="nav-link text-indigo"><i class="icon-copy text-indigo"></i> <span class=" text-dark">{{lang_tags.sidebar_bulk_upload}}</span></a>
+        </li>
+        <li class="nav-item nav-item-submenu">
+          <a href="{% url 'create_company_setup' %}" class="nav-link text-indigo"><i class="icon-cog3 text-indigo"></i> <span class=" text-dark">{{lang_tags.sidebar_settings}}</span></a>
+        </li>
+        <li class="nav-item nav-item-submenu">
+          <a href="{% url 'create_company_employee' %}" class="nav-link text-indigo"><i class="icon-briefcase3 text-indigo"></i> <span class=" text-dark">{{lang_tags.sidebar_employee}}</span></a>
+        </li>
+       
+        <li class="nav-item nav-item-submenu">
+          <a href="{% url 'create_requesttype' %}" class="nav-link text-indigo"><i class="icon-envelop4 text-indigo"></i> <span class=" text-dark">{{lang_tags.sidebar_request_module}}</span></a>
+        </li>
+        <li class="nav-item nav-item-submenu">
+          <a href="{% url 'create_biometric_attendance_record' %}" class="nav-link text-indigo"><i class="icon-user-check text-indigo"></i> <span class=" text-dark">{{lang_tags.sidebar_attendance}}</span></a>
+        </li>
+        <li class="nav-item nav-item-submenu">
+          <a href="{% url 'create_notification' %}" class="nav-link text-indigo"><i class="icon-megaphone text-indigo"></i> <span class=" text-dark">{{lang_tags.sidebar_anouncement}}</span></a>
+        </li>
+       
+        <li class="nav-item nav-item-submenu">
+          <a href="{% url 'create_company_asset' %}" class="nav-link text-indigo"><i class="icon-percent text-indigo"></i> <span class=" text-dark">{{lang_tags.sidebar_asset}}</span></a>
+        </li>
+        <li class="nav-item nav-item-submenu">
+          <a href="{% url 'create_employee_promotion' %}" class="nav-link text-indigo"><i class="icon-stats-growth text-indigo"></i> <span class=" text-dark">{{lang_tags.sidebar_performance}}</span></a>
+        </li>
+        <li class="nav-item nav-item-submenu">
+          <a href="{% url 'create_employee_basic_salarie' %}" class="nav-link text-indigo"><i class="icon-credit-card text-indigo"></i> <span class=" text-dark">{{lang_tags.sidebar_payroll}} </span></a>
+        </li>
+        <li class="nav-item nav-item-submenu">
+          <a href="{% url 'create_company_employe_termination' %}" class="nav-link text-indigo"><i class="icon-exit text-indigo"></i> <span class=" text-dark"> {{lang_tags.sidebar_employee_exit}}</span></a>
+        </li> 
+        <li class="nav-item nav-item-submenu">
+          <a href="{% url 'registration' %}" class="nav-link text-indigo"><i class="icon-user text-indigo"></i> <span class=" text-dark">{{lang_tags.sidebar_users}}</span></a>
+        </li> 
+        <li class="nav-item nav-item-submenu">
+          <a href="{% url 'groups-perms' %}" class="nav-link text-indigo"><i class="icon-check text-indigo"></i> <span class=" text-dark">{{lang_tags.sidebar_groups_perms}}</span></a>
+        </li> 
+        <li class="nav-item nav-item-submenu">
+          <a href="{% url 'create_disciplinary_action' %}" class="nav-link text-indigo"><i class="icon-check text-indigo"></i> <span class=" text-dark">Discplinary Actions</span></a>
+        </li> 
+          </ul>
+        </li>
+        <!-- /page kits -->
+      </ul>
+    </div> {% endcomment %}
+
+
+
+
+    {% comment %} {% endif %} {% endcomment %}
+    <!-- /main navigation -->
+  </div>
+  <!-- /sidebar content -->
+</div>
